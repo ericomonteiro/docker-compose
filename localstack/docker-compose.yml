@@ -1,19 +1,13 @@
-version: '2.1'
+version: '3.2'
 services:
   localstack:
     image: localstack/localstack
     ports:
-      - "4567-4584:4567-4584"
-      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
+      - "4566:4566"
+      - "8080:8080"
     environment:
       - SERVICES=${SERVICES- }
-      - DEBUG=${DEBUG- }
-      - DATA_DIR=${DATA_DIR- }
-      - PORT_WEB_UI=${PORT_WEB_UI- }
-      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }
-      - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }
-      - DOCKER_HOST=unix:///var/run/docker.sock
-      - AWS_ACCESS_KEY_ID=test
-      - AWS_SECRET_ACCESS_KEY=test
-    volumes:
-      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - START_WEB=1
+      - DEBUG=1
+      - AWS_ACCESS_KEY_ID=foo
+      - AWS_SECRET_ACCESS_KEY=bar  
