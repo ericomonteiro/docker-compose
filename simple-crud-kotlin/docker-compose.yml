@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  kotlin-spring-trace:
+    image: ericoh/kotlin-spring-trace:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - kotlin-spring-trace
+    depends_on:
+      - jaeger-compose
+
+  jaeger-compose:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "5775:5775/udp"
+      - "16686:16686"
+    networks:
+      - kotlin-spring-trace
+
+networks:
+  kotlin-spring-trace:
+    driver: bridge
