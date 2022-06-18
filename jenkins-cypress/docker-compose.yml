@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  jenkins:
+    image: jenkinsci/blueocean:latest
+    user: root
+    ports:
+      - 9000:8080
+    container_name: jenkins-cypress
+    volumes:
+      - ./volumes/home:/var/jenkins_home
+      - ./volumes/npm-cache:/root/.npm
+      - ./volumes/cypress-cache:/root/.cache
+      - /var/run/docker.sock:/var/run/docker.sock
