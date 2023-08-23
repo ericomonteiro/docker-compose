@@ -1,3 +1,7 @@
 jenkins/home/*
 jenkins-cypress/volumes/*
+
+localstack/.localstack
+localstack/volume
+
 /.idea/
